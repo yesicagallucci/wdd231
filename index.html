@@ -3,11 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <title>WDD231 - Web Frontend Development I</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/large.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fascinate&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <script src="scripts/getdates.js" defer></script>
+    <script src="scripts/certificate.js" defer></script>
+    <script src="scripts/menu.js" defer></script>
 
 </head>
 <body>
-    <p>Hello World!</p>
+    <header>
+        <img src="images/display-code.svg" alt="computer code logo" width="512" height="512">
+        <span>Yesica Gallucci - WDD231 site</span>
+        <a id="menu" href="#"></a>
+        <nav class="navigation">
+            <ul class="navigation-menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#" target="_blank">Chamber Project</a></li>
+                <li><a href="#" target="_blank">Final Project</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Home</h1>
+        <section class="about">
+            <h2>About Me</h2>
+            <p>Hi! I'm Yesica Gallucci, a creative support professional originally from Argentina, now living in Paraguay. I recently earned my Associate Degree in Applied Technology and enjoy exploring how design, technology, and communication come together to solve problems and create meaningful experiences. I share my home with my husband and five cats, and in my free time, I love reading, discovering new series, and learning new skills that help me grow personally and professionally.</p>
+        </section>
+        <section class="me">
+            <h2>Student Photo</h2>
+            <img src="images/cataratas-profile-pic.webp" alt="me in Cataratas del Iguazu">
+        </section>
+        <section class="certificate">
+            <h2>Web and Computer Programming Certificate</h2>
+            <nav class="filtered">
+                <ul>
+                    <li><a href="#" id="all">All Courses</a></li>
+                    <li><a href="#" id="wdd">WDD Courses</a></li>
+                    <li><a href="#" id="cse">CSE Courses</a></li>
+                </ul>
+                <div class="courses" id="course-title"></div>
+            </nav>
+        </section>
+    </main>
+    <footer>
+        <div class="smedia">
+            <a href="https://github.com/yesicagallucci"><img src="images/github.svg" alt="github icon"></a>
+            <a href="linkedin.com/in/yesicagallucci/"><img src="images/linkedin.svg" alt="linkedin icon"></a>
+            <a href="https://www.behance.net/yesicagallucci"><img src="images/behance.svg" alt="behance icon"></a>
+        </div>
+        <div class="footer-content">
+            <p>&copy;<span id="currentyear"></span> Yesica Gallucci 👩‍💻 Caacupe, Paraguay</p>
+            <p id="lastmodified"></p>
+        </div>
+    </footer>
 </body>
 </html>
