@@ -155,12 +155,13 @@ main h2{
   padding: 0;    
 }
 
-.filtered li{
+.filtered li {
   background-color: var(--color1);
   padding: 1rem;
   margin: 0.5rem;
   border-radius: 20px;
   width: 10rem;
+  transition: all 0.2s ease; 
 }
 
 .filtered a {
@@ -176,11 +177,7 @@ main h2{
 }
 
 .filtered li {
-  background-color: var(--color1);
-  padding: 1rem;
-  margin: 0.5rem;
-  border-radius: 20px;
-  transition: all 0.2s ease; 
+  
 }
 
 
