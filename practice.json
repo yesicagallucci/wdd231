@@ -1,0 +1,14 @@
+{
+    "family": "Valdez",
+    "welcome": "2021-05-20",
+    "many": 2,
+    "visited": true,
+    "members":[{"name": "yesica",
+    "gender": "female", 
+    "dob": "1982-02-17"},
+    {"name": "walter",
+    "gender":"male",
+    "dob": "1978-12-27"
+    }   
+]
+}
