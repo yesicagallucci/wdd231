@@ -26,9 +26,12 @@ const displayMembers = (businesses) => {
         logo.setAttribute("src", business.image);
         logo.setAttribute("alt", `logo of ${business.name}`);
         logo.setAttribute("loading", "lazy");
+        logo.setAttribute("width", "340");
+        logo.setAttribute("height", "340");
         name.textContent = `${business.name}`;
         address.textContent = `${business.address}`;
         phone.textContent = `${business.phone}`;
+        url.textContent = "website"
         url.setAttribute("href", business.url);
         url.setAttribute('target', '_blank');
         membership.textContent =  `Membership level: ${business.membership_level}`
