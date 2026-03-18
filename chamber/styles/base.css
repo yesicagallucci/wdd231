@@ -53,10 +53,10 @@ h1 {
 /*Menu*/
 #menu {
   font-size: 2rem;
-	font-weight: 700;
-	text-decoration: none;
-	padding: 0.5rem 0.75rem;
-	background-color: var(--color1);
+  font-weight: 700;
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--color1);
   position: absolute;
   top: 0;
   right: 0;
@@ -122,9 +122,11 @@ h2 {
 #cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    font-family: var(--main-font);
+    padding: 0.5rem;
 }
 
-section {
+#cards section {
   margin: 0.25rem;
   padding: 0.35rem;
   padding-bottom: 20px;
@@ -134,14 +136,37 @@ section {
   align-items: center;
 }
 
-img {
+#cards img {
     width: auto;
     max-width: 325px;
     box-shadow: 0 0 30px #fff;
     height: 200px;
     border-radius: 20px;
-   
+    margin: .5rem;
 }
+
+#cards h3 {
+    font-family: var(--main-font);
+    color: var(--color1);
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+#cards p {
+    font-family: var(--main-font);
+    padding: 0.5rem;
+    text-align: center;
+}
+
+#cards .mlevel {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--color1);
+    
+}
+
+
 
  
   footer {
