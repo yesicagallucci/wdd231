@@ -24,7 +24,7 @@ header {
 
 header img {
   display: block;
-  width: 80px;   
+  width: 12rem;   
   height: auto;  
   max-width: 100%;
   text-align: center;
@@ -83,6 +83,7 @@ h1 {
 .navigation li {
 	display: none;
 }
+
 .navigation a {
 	display: block;
 	padding: 0.75rem;
@@ -139,7 +140,7 @@ h2 {
 #cards img {
     width: auto;
     max-width: 325px;
-    box-shadow: 0 0 30px #fff;
+    box-shadow: 0 0 10px var(--color1);
     height: 200px;
     border-radius: 20px;
     margin: .5rem;
@@ -148,7 +149,7 @@ h2 {
 #cards h3 {
     font-family: var(--main-font);
     color: var(--color1);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     padding: 0.5rem;
     text-align: center;
 }
@@ -166,17 +167,29 @@ h2 {
     
 }
 
+/*FOOTER*/
 
+footer {
+  background-color: var(--color1);
+  color: var(--color2);
+  font-size: 1rem;
+  padding: 2rem;
+  width: auto;
+  text-align: left;
+      
+}
 
- 
-  footer {
-    background-color: var(--color1);
-    color: var(--color2);
-    font-size: 1.5rem;
-    padding: 2rem;
-    width: auto;
-    text-align: center;
+.ccc-data, 
+.smedia,
+.footer-content {
+
+  padding: .5rem;
+}
+
+.smedia a {
+  color: var(--color2);
+  padding: .5rem;
+  padding-left: 0;
 }
 
 
-/*FOOTER*/

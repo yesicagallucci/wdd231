@@ -1,0 +1,62 @@
+
+/* Bigger than Phones(laptop / desktop) */
+@media only screen and (min-width: 60rem) {
+  
+
+  header {
+    display: grid;
+    grid-template-columns: 1fr 2fr;   /* logo + heading */
+    grid-template-rows: auto auto;    /* first row for logo/h1, second row for nav */
+    align-items: center;
+    padding: 0 1rem;            
+  }
+
+  header img {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  header h1 {
+    grid-column: 2;
+    grid-row: 1;
+   
+  }
+
+  #menu {
+    display: none;
+  }
+
+  .navigation {
+    grid-column: 1 / 3;  
+    grid-row: 2;             
+    text-align: center;
+    margin: 0 auto;
+  }
+
+   .navigation ul {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+
+  .navigation li {
+    display: inline-block;
+  }
+
+  .navigation a {
+    text-align: center;
+    padding: 0.75rem 1rem;
+  }
+
+  /*FOOTER*/
+  footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    text-align: left;
+
+  }
+
+  
+
+}
