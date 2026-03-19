@@ -138,32 +138,32 @@ h2 {
 }
 
 #cards img {
-    width: auto;
-    max-width: 325px;
-    box-shadow: 0 0 10px var(--color1);
-    height: 200px;
-    border-radius: 20px;
-    margin: .5rem;
+  width: 80%;          /* fill the card width */
+  height: 200px;        /* fixed height for consistency */
+  object-fit: cover;
+  box-shadow: 0 0 10px var(--color1);
+  border-radius: 20px;
+  margin: .5rem;
 }
 
 #cards h3 {
-    font-family: var(--main-font);
-    color: var(--color1);
-    font-size: 1.2rem;
-    padding: 0.5rem;
-    text-align: center;
+  font-family: var(--main-font);
+  color: var(--color1);
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  text-align: center;
 }
 
 #cards p {
-    font-family: var(--main-font);
-    padding: 0.5rem;
-    text-align: center;
+  font-family: var(--main-font);
+  padding: 0.5rem;
+  text-align: center;
 }
 
 #cards .mlevel {
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: var(--color1);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--color1);
     
 }
 
