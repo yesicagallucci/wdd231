@@ -140,7 +140,7 @@ h2 {
 #cards img {
   width: 80%;          /* fill the card width */
   height: 200px;        /* fixed height for consistency */
-  object-fit: cover;
+  object-fit: scale-down;
   box-shadow: 0 0 10px var(--color1);
   border-radius: 20px;
   margin: .5rem;
