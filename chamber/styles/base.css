@@ -110,6 +110,15 @@ h1 {
   color: var(--color2);
 }
 
+/* Wayfinding */
+.navigation a.active {
+  text-decoration: underline;
+  text-decoration-thickness: 3px; 
+  text-underline-offset: 4px;     
+  color: var(--color2);
+}
+
+
 
 
 /*DIRECTORY PAGE*/
