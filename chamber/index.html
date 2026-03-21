@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page for the Caacupe Chamber of Commerce</title>
+    <meta name="description" content="Members of the Chamber of Commerce of Caacupe - this is a fictional chamber of commerce, this site was created for educational purposes">
+    <meta name="author" content="Yesica Gallucci">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="./styles/base.css">
+    <link rel="stylesheet" href="./styles/large.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fascinate&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link rel="icon" href="./images/favicon.ico">
+    <meta property="og:title" content="Chamber of Commerce of Caacupe - Members"> 
+    <meta property="og:description" content="Home page of the Chamber of Commerce of Caacupe - this is a fictional chamber of commerce, this site was created for educational purposes">
+    <meta property="og:image" content="https://yesicagallucci.github.io/wdd231/chamber/images/background-%20ccc.jpg">
+    <meta property="og:url" content="https://yesicagallucci.github.io/wdd231/chamber/index.html">
+    <script src="./scripts/getdates.js" defer></script>
+    <script src="./scripts/menu.js" defer></script>
+</head>
+<body>
+     <header>
+        <a href="index.html" aria-label="go to home" ><img src="./images/cccaacupe-logo.svg" alt="logo for the Caacupe chamber of commerce"></a>
+        <h1>Caacupe's Chamber of Commerce</h1>
+        <a id="menu" href="#"></a>
+        <nav class="navigation">
+            <ul class="navigation-menu">
+                <li><a href="index.html" class="active" aria-label="home">Home</a></li>
+                <li><a href="directory.html" aria-label="directory">Directory</a></li>
+                <li><a href="join.html" aria-label="join">Join</a></li>
+                <li><a href="discover.html" aria-label="discover">Discover</a></li>
+            </ul>
+        </nav>
+        <div id="mode"></div>
+        <picture class="hero">
+            <source media="(max-width: 400px)" srcset="./images/hero-mobile.webp">
+            <source media="(max-width: 960px)" srcset="./images/hero-medium.webp">
+            <img src="./images/hero-large.webp" alt="bumping fists over a desk in a business meeting" width="1920" height="849" loading="lazy">
+        </picture>
+        <a href="join.html" aria-label="join page" class="cta">Become a member</a>
+    </header>
+    <main>
+        <section class="info">
+            <div class="events"></div>
+            <div class="currentw"></div>
+            <div class="forecast"></div>
+        </section>
+        <section id="display-members"></section>
+        
+
+
+    </main>
+    <footer>
+        <div class="ccc-data">
+            <p>Caacupe Chamber of Commerce</p>
+            <p>Caacupe, Cordillera, Paraguay</p>
+        </div>
+         <div class="smedia">
+            <a href="https://www.youtube.com/" target="_blank"><!--<img src="" alt="YouTube icon">-->YouTube</a>
+            <a href="https://www.linkedin.com/feed/" target="_blank"><!--<img src="" alt="LinkedIn icon">-->LinkedIn</a>
+            <a href="https://www.instagram.com/" target="_blank"><!--<img src="" alt="Instagram icon">-->Instagram</a>
+        </div>
+        <div class="footer-content">
+            <p>WDD231 Class Project</p>
+            <p>Yesica Gallucci</p>
+            <p>&copy;<span id="currentyear"></span> Caacupe Chamber of Commerce</p>
+            <p id="lastmodified"></p>
+        </div>
+    </footer>
+</body>
+</html>
