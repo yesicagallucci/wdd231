@@ -57,6 +57,8 @@ h1 {
     margin-bottom: 0;
 }
 
+/*Hero image*/
+
 .hero {
   grid-column:1/4;
   grid-row: 2;
@@ -93,8 +95,6 @@ h1 {
   transform: translate(-50%, -50%) scale(0.95);
   box-shadow: 0 2px 3px rgba(0,0,0,0.5);
 }
-
-
 
 
 /*Menu*/
@@ -165,19 +165,75 @@ h1 {
   
 }
 
-/*Hero image*/
+
 
 
 
 /*DIRECTORY PAGE*/
 
+
 h2 {
     font-family: var(--heading-font);
     padding: 20px;
-    color: var(--color1);
+    color: var(--color1);   
 }
 
-#cards {
+.view-toggle {
+  display: flex;
+  justify-content: center; /* centers horizontally */
+  margin: 1rem 0;
+}
+
+
+.view-toggle button {
+  font-family: var(--main-font);
+  padding: 10px;
+  color: var(--color2);
+  background-color: var(--color1);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;  
+
+}
+
+.view-toggle button:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 3px rgba(0,0,0,0.3);
+}
+
+/* List view */
+#cards.list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+}
+
+#cards.list section {
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem;
+  
+}
+
+#cards.list img {
+  display: none;
+}
+
+#cards.list h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  text-align: left;
+}
+
+#cards.list p {
+  text-align: left;
+  margin: 0.2rem 0;
+}
+
+/* Grid view */
+
+#cards.grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     font-family: var(--main-font);
@@ -219,7 +275,7 @@ h2 {
   font-weight: 700;
   font-size: 1.2rem;
   color: var(--color1);
-    
+   
 }
 
 /*FOOTER*/

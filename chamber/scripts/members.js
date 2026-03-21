@@ -33,6 +33,7 @@ const displayMembers = (businesses) => {
         url.textContent = "website"
         url.setAttribute("href", business.url);
         url.setAttribute('target', '_blank');
+        url.setAttribute("aria-label", `${business.name} website`)
         membership.textContent =  `Membership level: ${business.membership_level}`;
         membership.setAttribute("class", "mlevel");
 
@@ -49,3 +50,18 @@ const displayMembers = (businesses) => {
 }
 
 getMembers();
+
+const container = document.querySelector('#cards');
+const gridBtn = document.querySelector('#grid');
+const listBtn = document.querySelector('#list');
+
+gridBtn.addEventListener('click', () => {
+  container.classList.add('grid');
+  container.classList.remove('list');
+});
+
+listBtn.addEventListener('click', () => {
+  container.classList.add('list');
+  container.classList.remove('grid');
+});
+
