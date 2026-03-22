@@ -90,11 +90,11 @@ async function fetchMembers() {
         container.innerHTML += `
             <div class="member-card">
                 <h3>${business.name}</h3>
+                <img src="${business.image}" alt="${business.name}" style="max-width:150px;">
                 <p>${business.address}</p>
                 <p>${business.phone}</p>
                 <a href="${business.url}" target="_blank">Visit Website</a>
-                <p><strong>Level:</strong> ${business.membership_level}</p>
-                <img src="${business.image}" alt="${business.name}" style="max-width:150px;">
+                <p><strong>Level:</strong> ${business.membership_level}</p>  
             </div>
         `;
     });

@@ -75,17 +75,23 @@
 
   .main-home {
     display: grid;
-    grid-template-rows: auto auto;
+    grid-template-rows: 1fr 1fr;
   }
 
   #info {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
+    gap: 1rem;
   }
 
   #members-container {
     display: flex;
     flex-direction: row;
+  }
+
+  #weather-info {
+  display: flex;
+  flex-direction: column;
   }
 
   
