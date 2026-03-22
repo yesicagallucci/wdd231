@@ -71,6 +71,25 @@
     padding: 15px;
   }
 
+  /*HOME PAGE*/
+
+  .main-home {
+    display: grid;
+    grid-template-rows: auto auto;
+  }
+
+  #info {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+
+  #members-container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  
+
   /*FOOTER*/
   footer {
     display: grid;

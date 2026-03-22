@@ -49,13 +49,12 @@ function displayForecast(data) {
     const date = new Date(item.dt_txt).toLocaleDateString();
     const temp = item.main.temp.toFixed(1);
     const desc = item.weather[0].description;
-    const icon = item.weather[0].icon;
+    
 
     container.innerHTML += `
       <div class="forecast-day">
         <p><strong>${date}</strong></p>
         <p>${temp} °C - ${desc}</p>
-        <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="${desc}">
       </div>
     `;
   });
