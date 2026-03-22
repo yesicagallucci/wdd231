@@ -49,12 +49,12 @@ header span {
 
 
 h1 {
-    font-family: var(--heading-font);
-    background-color: var(--color1);
-    font-size: 2rem;
-    color: var(--color2);
-    padding: 1rem;
-    margin-bottom: 0;
+  font-family: var(--heading-font);
+  background-color: var(--color1);
+  font-size: 2rem;
+  color: var(--color2);
+  padding: 1rem;
+  margin-bottom: 0;
 }
 
 /*Hero image*/
@@ -173,8 +173,7 @@ h1 {
 
 .main-home { 
   display: flex;
-  flex-direction: column;   
-  align-items: left;      
+  flex-direction: column;      
   justify-content: left;  
   min-height: 100vh;    
   font-family: var(--main-font);
