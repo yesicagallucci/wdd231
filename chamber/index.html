@@ -19,6 +19,7 @@
     <meta property="og:url" content="https://yesicagallucci.github.io/wdd231/chamber/index.html">
     <script src="./scripts/getdates.js" defer></script>
     <script src="./scripts/menu.js" defer></script>
+    <script src="./scripts/home.js" defer></script>
 </head>
 <body>
      <header>
@@ -42,15 +43,46 @@
         <a href="join.html" aria-label="join page" class="cta">Become a member</a>
     </header>
     <main>
-        <section class="info">
-            <div class="events"></div>
-            <div class="currentw"></div>
-            <div class="forecast"></div>
-        </section>
-        <section id="display-members"></section>
+        <div id="info">
+            <section id="events">
+                <h2>Events</h2>
+                <div id="events-content">  
+                    <div class="event-item">
+                        <h3>Spring Business Networking Breakfast</h3>
+                        <p>Date: April 5, 2026</p>
+                        <p>Location: Chamber Main Hall</p>
+                        <p>Join local entrepreneurs for coffee, conversation, and new connections.</p>
+                        </div>
+
+                        <div class="event-item">
+                        <h3>Workshop: Digital Marketing Essentials</h3>
+                        <p>Date: April 12, 2026</p>
+                        <p>Location: Conference Room B</p>
+                        <p>Learn practical strategies to boost your online presence and reach new customers.</p>
+                        </div>
+
+                        <div class="event-item">
+                        <h3>Small Business Expo</h3>
+                        <p>Date: April 20, 2026</p>
+                        <p>Location: City Community Center</p>
+                        <p>Discover products and services from local businesses and enjoy live demonstrations.</p>
+                    </div>                  
+                </div>
+            </section>
+            <section id="currentw">
+                <h2>Current Weather</h2>
+                <div id="weather-info"></div>
+            </section>
+            <section id="forecast">
+                <h2>Forecast</h2>
+                <div id="forecast-info"></div>
+            </section>
+        </div>
+        <div id="display-members">
+            <h2>Featured Members</h2>
+            <div id="members-container"></div>
+        </div>     
         
-
-
     </main>
     <footer>
         <div class="ccc-data">
