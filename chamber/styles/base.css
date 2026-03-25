@@ -208,7 +208,7 @@ h1 {
 
 #weather-info {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .member-card{
