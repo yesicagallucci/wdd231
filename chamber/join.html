@@ -19,6 +19,7 @@
     <meta property="og:url" content="https://yesicagallucci.github.io/wdd231/chamber/index.html">
     <script src="./scripts/getdates.js" defer></script>
     <script src="./scripts/menu.js" defer></script>
+    <script src="./scripts/form.js" defer></script>
     
 
 </head>
@@ -39,18 +40,55 @@
         
     </header>
 
-    <main></main>
+    <main class="join">
+        <h2>Join the Chamber</h2>
+        <div class="form">
+            <form method="get" action="thankyou.html" class="join-form">
+                <fieldset class="personal-data">
+                    <legend>Applicant's Information</legend>
+                    <label>First Name*<input type="text" autocomplete="given-name" name="fname" required></label>
+                    <label>Last Name* <input type="text" autocomplete="family-name" name="lname" required></label>
+                    <label>Organizationl Title* <input type="text" name="organization" title="Applicant's organizational title within their organization" autocomplete="organization-title" pattern="[A-Za-z\- ]{7,}" required></label>
+                    <label>Email Address*<input type="email" name="email" placeholder="name@server.com" title="Applicant's email address" autocomplete="email" required></label>
+                    <label>Mobile Phone Number <input type="telephone" name="phone" title="mobile phone number" autocomplete="tel" required></label>
+                </fieldset>
+                <fieldset>
+                    <legend>Business' Information</legend>
+                    <label>Business/Organization's Name <input type="text" name="business" title="business name" autocomplete="organization"></label>
+                    <label>Business/Organization's Description<textarea title="business description" name="orgDescription"></textarea></label>
+                </fieldset>
+                <fieldset>
+                    <legend>Membership Level</legend>
+                    <label><input type="radio" name="membership" value="non-profit">NP Membership</label>
+                    <label><input type="radio" name="membership" value="bronze">Bronze Membership</label>
+                    <label><input type="radio" name="membership" value="silver">Silver Membership</label>
+                    <label><input type="radio" name="membership" value="gold">Gold Membership</label>
+                </fieldset>
+                <input type="hidden" id="formTimestamp" name="formTimestamp" value="">
+                <input type="submit" value="Became a Member">
+            </form>
+
+        </div>
+        <div class="membership-cards">
+            <div id="membership-cards"></div>
+            <dialog id="modal-np"></dialog>
+            <dialog id="modal-bronze"></dialog>
+            <dialog id="modal-silver"></dialog>
+            <dialog id="modal-gold"></dialog>
+        </div>
+        
+    </main>
 
     <footer>
         <div class="ccc-data">
             <p>Caacupe Chamber of Commerce</p>
             <p>Caacupe, Cordillera, Paraguay</p>
         </div>
-         <div class="smedia">
-            <a href="https://www.youtube.com/" target="_blank"><!--<img src="" alt="YouTube icon">-->YouTube</a>
-            <a href="https://www.linkedin.com/feed/" target="_blank"><!--<img src="" alt="LinkedIn icon">-->LinkedIn</a>
-            <a href="https://www.instagram.com/" target="_blank"><!--<img src="" alt="Instagram icon">-->Instagram</a>
-        </div>
+        <div class="smedia">
+            <a href="https://github.com/yesicagallucci"><img src="images/github.svg" alt="github icon"></a>
+            <a href="linkedin.com/in/yesicagallucci/"><img src="images/linkedin.svg" alt="linkedin icon"></a>
+            <a href="https://www.behance.net/yesicagallucci"><img src="images/behance.svg" alt="behance icon"></a>
+        </div>    
         <div class="footer-content">
             <p>WDD231 Class Project</p>
             <p>Yesica Gallucci</p>

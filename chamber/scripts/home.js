@@ -94,7 +94,7 @@ async function fetchMembers() {
                 <p>${business.address}</p>
                 <p>${business.phone}</p>
                 <a href="${business.url}" target="_blank">Visit Website</a>
-                <p><strong>Level:</strong> ${business.membership_level}</p>  
+                
             </div>
         `;
     });

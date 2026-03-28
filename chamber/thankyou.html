@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caacupe Chamber of Commerce Discover Page</title>
-    <meta name="description" content="Members of the Chamber of Commerce of Caacupe - this is a fictional chamber of commerce, this site was created for educational purposes">
+    <title>Form Confirmation Page</title>
+    <meta name="description" content="Chamber of Commerce of Caacupe - this is a fictional chamber of commerce, this site was created for educational purposes">
     <meta name="author" content="Yesica Gallucci">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="./styles/base.css">
@@ -14,11 +14,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Fascinate&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
     <link rel="icon" href="./images/favicon.ico">
     <meta property="og:title" content="Chamber of Commerce of Caacupe - Members"> 
-    <meta property="og:description" content="Members of the Chamber of Commerce of Caacupe - this is a fictional chamber of commerce, this site was created for educational purposes">
+    <meta property="og:description" content="Home page of the Chamber of Commerce of Caacupe - this is a fictional chamber of commerce, this site was created for educational purposes">
     <meta property="og:image" content="https://yesicagallucci.github.io/wdd231/chamber/images/background-%20ccc.jpg">
-    <meta property="og:url" content="https://yesicagallucci.github.io/wdd231/chamber/directory.html">
+    <meta property="og:url" content="https://yesicagallucci.github.io/wdd231/chamber/index.html">
     <script src="./scripts/getdates.js" defer></script>
     <script src="./scripts/menu.js" defer></script>
+    <script src="./scripts/param.js" defer></script>
 </head>
 <body>
     <header>
@@ -30,13 +31,17 @@
                 <li><a href="index.html" aria-label="home">Home</a></li>
                 <li><a href="directory.html" aria-label="directory">Directory</a></li>
                 <li><a href="join.html" aria-label="join">Join</a></li>
-                <li><a href="#" class="active" aria-label="discover">Discover</a></li>
+                <li><a href="discover.html" aria-label="discover">Discover</a></li>
             </ul>
         </nav>
         <div id="mode"></div>
         
     </header>
-    <main></main>
+    <main class="thankyou">
+        <h2>Welcome to Caacupe's Chamber of Commerce</h2>
+        <div id="results"></div>
+
+    </main>
     <footer>
         <div class="ccc-data">
             <p>Caacupe Chamber of Commerce</p>

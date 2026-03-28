@@ -6,7 +6,7 @@
       "phone": "+595 972 549029",
       "url": "https://www.pedidosya.com.py/restaurantes/caacupe/bar-comedor-dona-mary-menu",
       "image": "https://i.imgur.com/jM7VGUW.jpeg",
-      "membership_level": 1
+      "membership_level": "Gold"
     },
     {
       "name": "Pizzería La Piedra",
@@ -14,7 +14,7 @@
       "phone": "+595 986 750208",
       "url": "https://www.facebook.com/p/La-Piedra-Pizzas-100063717032921/",
       "image": "https://i.imgur.com/pZ8DrDh.png",
-      "membership_level": 2
+      "membership_level": "Silver"
     },
     {
       "name": "La Mexicana",
@@ -22,7 +22,7 @@
       "phone": "+595 981 595710",
       "url": "https://www.instagram.com/lamexicanaenparaguay/",
       "image": "https://i.imgur.com/j9DED9K.png",
-      "membership_level": 3
+      "membership_level": "Bronze"
     },
     {
       "name": "Bendito Café",
@@ -30,7 +30,7 @@
       "phone": "+595 992 351877",
       "url": "https://www.facebook.com/bendito.py",
       "image": "https://i.imgur.com/wNgsiKf.png",
-      "membership_level": 2
+      "membership_level": "Silver"
     },
     {
       "name": "Super Pronto",
@@ -38,7 +38,7 @@
       "phone": "+595 985 301301",
       "url": "https://www.facebook.com/superprontopy/?locale=es_LA",
       "image": "https://i.imgur.com/fmEqW7F.png",
-      "membership_level": 3
+      "membership_level": "Bronze"
     },
     {
       "name": "Veterinaria Mara",
@@ -46,7 +46,7 @@
       "phone": "+595 511 242065",
       "url": "https://www.instagram.com/vet.mara/",
       "image": "https://i.imgur.com/LxeU7Wb.png",
-      "membership_level": 1
+      "membership_level": "Gold"
     },
     {
       "name": "Cooperativa Cumbre de la Cordillera",
@@ -54,7 +54,7 @@
       "phone": "+595 511 242330",
       "url": "https://www.cumbre.coop.py",
       "image": "https://i.imgur.com/SjaIA1k.png",
-      "membership_level": 3
+      "membership_level": "Bronze"
     },
     {
       "name": "SSS Hogar",
@@ -62,7 +62,7 @@
       "phone": "+595 511 244488",
       "url": "https://www.facebook.com/ssshogarcaacupe/",
       "image": "https://i.imgur.com/8UNllN3.png",
-      "membership_level": 2
+      "membership_level": "Silver"
     },
     {
       "name": "Marangatu Sabor",
@@ -70,7 +70,7 @@
       "phone": "+595 991 256638 ",
       "url": "https://www.facebook.com/marangatu/",
       "image": "https://i.imgur.com/1OcrPVZ.png",
-      "membership_level": 1
+      "membership_level": "Gold"
     },
     {
       "name": "Pyaha - Tejidos artesanales",
@@ -78,7 +78,7 @@
       "phone": "+595 991 468970",
       "url": "https://www.facebook.com/pyaha/",
       "image": "https://i.imgur.com/2RhLclJ.jpeg",
-      "membership_level": 2
+      "membership_level": "Silver"
     },
     {
       "name": "Kely Creaciones",
@@ -86,7 +86,7 @@
       "phone": "+595 891 552934",
       "url": "https://www.facebook.com/kelycreaciones/",
       "image": "https://i.imgur.com/2tFoOel.jpeg",
-      "membership_level": 3
+      "membership_level": "Bronze"
     },
     {
       "name": "Cositas para Casita",
@@ -94,7 +94,7 @@
       "phone": "+595 891 456718",
       "url": "https://www.facebook.com/cositasparacasita/",
       "image": "https://i.imgur.com/voHXM5X.jpeg",
-      "membership_level": 1
+      "membership_level": "Gold"
     },
     {
       "name": "La casa del Mykure",
@@ -102,7 +102,7 @@
       "phone": "+595 991 638234",
       "url": "https://www.facebook.com/lacasadelmykure/",
       "image": "https://i.imgur.com/GuKpeWP.jpeg",
-      "membership_level": 2
+      "membership_level": "Silver"
     }
   ]
 }
