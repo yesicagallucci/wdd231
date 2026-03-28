@@ -46,20 +46,20 @@
             <form method="get" action="thankyou.html" class="join-form">
                 <fieldset class="personal-data">
                     <legend>Applicant's Information</legend>
-                    <label>First Name*<input type="text" autocomplete="given-name" name="fname" required></label>
-                    <label>Last Name* <input type="text" autocomplete="family-name" name="lname" required></label>
+                    <label>First Name*<input type="text" autocomplete="given-name" name="fname" required title="first name"></label>
+                    <label>Last Name* <input type="text" autocomplete="family-name" name="lname" required title="family name"></label>
                     <label>Organizationl Title* <input type="text" name="organization" title="Applicant's organizational title within their organization" autocomplete="organization-title" pattern="[A-Za-z\- ]{7,}" required></label>
                     <label>Email Address*<input type="email" name="email" placeholder="name@server.com" title="Applicant's email address" autocomplete="email" required></label>
-                    <label>Mobile Phone Number <input type="telephone" name="phone" title="mobile phone number" autocomplete="tel" required></label>
+                    <label>Mobile Phone Number <input type="tel" name="phone" title="mobile phone number" autocomplete="number" required placeholder="+595 999 123456" pattern="^\+?[0-9\s\-]{7,15}$" ></label>
                 </fieldset>
                 <fieldset>
                     <legend>Business' Information</legend>
-                    <label>Business/Organization's Name <input type="text" name="business" title="business name" autocomplete="organization"></label>
+                    <label>Business/Organization's Name <input type="text" name="business" title="business name" autocomplete="organization" required></label>
                     <label>Business/Organization's Description<textarea title="business description" name="orgDescription"></textarea></label>
                 </fieldset>
                 <fieldset>
                     <legend>Membership Level</legend>
-                    <label><input type="radio" name="membership" value="non-profit">NP Membership</label>
+                    <label><input type="radio" name="membership" value="np" required>NP Membership</label>
                     <label><input type="radio" name="membership" value="bronze">Bronze Membership</label>
                     <label><input type="radio" name="membership" value="silver">Silver Membership</label>
                     <label><input type="radio" name="membership" value="gold">Gold Membership</label>

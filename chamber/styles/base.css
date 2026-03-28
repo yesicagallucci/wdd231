@@ -383,7 +383,7 @@ h2 {
 
 .form input[type="text"],
 .form input[type="email"],
-.form input[type="telephone"] {
+.form input[type="tel"] {
   display: block;
   border-radius: 6px;
   padding: .75rem;

@@ -98,8 +98,7 @@
 
   .join {
     display: grid;
-    grid-template-columns: 2(1fr);
-    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
   }
 
   .join h2 {
