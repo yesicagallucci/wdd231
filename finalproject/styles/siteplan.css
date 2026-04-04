@@ -16,7 +16,7 @@
 body {
   margin: 0;
   height: 100vh;
-  background: url("../images/pattern.svg") repeat;
+  background: url("../images/pattern.webp") repeat;
   background-size: 200px 200px;
   font-family: var(--main-font);
 }
