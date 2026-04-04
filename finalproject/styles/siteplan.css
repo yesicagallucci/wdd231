@@ -1,0 +1,150 @@
+:root {
+    --color1: #260c1f;
+    --color2: #733262; 
+    --color3: #BF3A0A;
+    --color4: #f28c0f;
+    --color5: #fafaf0;
+    --heading-font: "Caveat Brush", cursive;
+    --main-font: "Roboto", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: url("../images/pattern.svg") repeat;
+  background-size: 200px 200px;
+  font-family: var(--main-font);
+}
+
+header {
+  background-color: var(--color2);
+  color: var(--color5);
+  text-align: center;
+  padding: 1rem;
+}
+
+header h1 {
+  font-family: var(--heading-font);
+}
+
+header img {
+  max-width: 150px;
+  height: auto;
+  margin-top: 0.5rem;
+}
+
+
+
+main {
+ background-color: var(--color5);
+ width: 95%;
+ margin: 1rem auto;
+ padding: 1rem;
+ border-radius: 12px;
+ box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+section h2 {
+  font-family: var(--heading-font);
+  color: var(--color2);
+  margin-bottom: 0.5rem;
+}
+
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .5rem;
+  padding: 1rem;
+}
+
+.p {
+  grid-column: 1/2;
+  text-align: right;
+}
+
+.swatch {
+  grid-column: 2/3;
+  width: 60px;
+  height: 30px;
+  margin: 0 10px;
+  border-radius: 6px;
+}
+
+.ivory { 
+  background-color:var(--color5); 
+  border: solid 1px var(--color1);
+  
+}  
+
+.darkv { background-color:var(--color1); }  
+.mviolet  { background-color:var(--color2); }   
+.darko { background-color:var(--color3); }  
+.lighto  { background-color:var(--color4); } 
+
+
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  width: 100%;
+  max-width: 280px; /* base size for small screens */
+  height: auto;
+  border: 2px solid var(--color2);
+  border-radius: 8px;
+}
+
+figcaption {
+  font-size: 0.9rem;
+  color: var(--color1);
+  margin-top: 0.5rem;
+}
+
+footer {
+  background-color: var(--color2);
+  color: var(--color5);
+  text-align: center;
+  padding: 1rem;
+}
+
+.footer-content p {
+  margin: 0.3rem 0;
+}
+
+/* Media Queries */
+@media (min-width: 600px) {
+  header img {
+    max-width: 200px;
+  }
+
+  figure img {
+    max-width: 500px; /* larger wireframes on bigger screens */
+  }
+
+  main {
+    width: 80%;
+    padding: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  main {
+    width: 60%;
+  }
+
+  figure img {
+    max-width: 600px;
+  }
+}

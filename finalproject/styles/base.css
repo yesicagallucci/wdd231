@@ -1,0 +1,22 @@
+:root {
+    --color1: #260c1f;
+    --color2: #733262; 
+    --color3: #BF3A0A;
+    --color4: #f28c0f;
+    --color5: #fafaf0;
+    --heading-font: "Caveat Brush", cursive;
+    --main-font: "Roboto", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: url("../images/pattern.svg") repeat;
+  background-size: 200px 200px;
+}
+
