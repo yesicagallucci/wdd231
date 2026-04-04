@@ -1,0 +1,23 @@
+@media only screen and (min-width: 38rem) {
+
+  .card {
+   
+   grid-template-areas: 
+        "photograph name"
+        "photograph description"
+        "photograph location"
+        "photograph more";
+
+    }
+
+    .card img {
+        width: 300px;
+        height: 200px;
+    }
+
+    .card p,
+    .card address {
+        text-align: left;
+        margin: 1rem;
+    }
+}

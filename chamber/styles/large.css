@@ -1,6 +1,6 @@
 
 /* Bigger than Phones(laptop / desktop) */
-@media only screen and (min-width: 60rem) {
+@media only screen and (min-width: 64rem) {
   
   * {
   margin: 0;
@@ -105,6 +105,12 @@
     grid-column: 1/3;
   }
 
+  #cards-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+  }
+
   
 
   /*FOOTER*/
@@ -119,3 +125,4 @@
   
 
 }
+

@@ -468,7 +468,8 @@ second value applies to top-right corner,
 third value applies to bottom-right corner, 
 and fourth value applies to bottom-left corner)*/
 
-.cardnp button {
+.cardnp button,
+.card button {
   font-family: var(--main-font);
   padding: .5rem;
   border-radius: 6px;
@@ -483,7 +484,8 @@ and fourth value applies to bottom-left corner)*/
 }
 
 
-.cardnp button:active {
+.cardnp button:active,
+.card button:active {
   transform: scale(0.95);
   box-shadow: 0 2px 3px rgba(0,0,0,0.5);
 }
@@ -579,6 +581,85 @@ dialog button {
   font-family: var(--heading-font);
   color: var(--color1);
 }
+
+/*DISCOVER*/
+
+#visit-message {
+  font-family: var(--main-font);
+  font-size: 1.2rem;
+  color: var(--color1);
+  background-color: var(--color2);
+  text-align: center;
+  font-weight: bold;
+  padding: 1rem;
+  border-bottom: 5px solid var(--color1);
+}
+
+
+/*Grid temaplate area*/
+
+#cards-container {
+  font-family: var(--main-font);
+  color: var(--color1);
+  margin: 1rem;
+
+}
+
+.card {
+  background-color: var(--color2);
+  border: 1px solid var(--color1);
+  margin: 1rem;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 10px;
+  display: grid;
+  grid-template-areas: 
+  "name"
+  "photograph"
+  "description"
+  "location"
+  "more"
+  ;
+
+}
+
+.card h2 {
+  grid-area: name;
+ 
+   
+}
+
+.card p {
+  grid-area: description;
+}
+
+.card address {
+  grid-area: location;
+}
+
+.card img {
+ width: 100%;
+ border-radius: 10px;
+}
+
+.card figure{
+  grid-area: photograph;
+}
+
+.card figcaption {
+  font-size: .7rem;
+  margin-bottom: 1rem
+    
+}
+
+.card button {
+  grid-area: more;
+  max-width: 10rem;
+  margin: 0 auto;
+  margin-top: 1rem;
+  
+}
+
 
 /*FOOTER*/
 
