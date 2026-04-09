@@ -19,6 +19,7 @@
     <meta property="og:image" content="">
     <meta property="og:url" content="https://yesicagallucci.github.io/wdd231/finalproject/index.html">
     <script src="scripts/getdates.js" defer></script>
+    <script src="./scripts/catalog-main.js" type="module"></script>
     
 </head>
 <body>
@@ -26,9 +27,13 @@
         <a href="index.html" aria-label="go to home"><img src="./images/readtwist-logo-border-smaller.webp" alt="logo of ReadTwist"></a>
         <h1>Track what you read, the next one's a surprise</h1>
     </header>
-    <main class="home">
+    <main class="catalog">
+        <h1>Book Catalog</h1>
+        <input type="text" id="searchInput" placeholder="Search books...">
+        <div id="catalogContainer"></div>
 
     </main>
+
     <footer>
         <p>&copy;<span id="currentyear"></span> By Yesica Gallucci</p>
         <p id="lastmodified"></p>

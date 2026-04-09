@@ -16,7 +16,55 @@
 body {
   margin: 0;
   height: 100vh;
-  background: url("../images/pattern.svg") repeat;
+  background: url("../images/pattern.webp") repeat;
   background-size: 200px 200px;
 }
 
+header {
+  background-color: var(--color2) ;
+  color: var(--color5);
+  text-align: center;
+  padding: 1rem;
+}
+
+header h1 {
+  font-family: var(--heading-font);
+}
+
+
+header img {
+  max-width: 150px;
+  height: auto;
+  margin-top: 0.5rem;
+}
+
+main {
+ background-color: var(--color5);
+ width: 95%;
+ margin: 1rem auto;
+ padding: 1rem;
+ border-radius: 12px;
+ box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+}
+
+
+
+footer {
+  background-color: var(--color3);
+  color: var(--color5);
+  text-align: center;
+  padding: 1rem;
+}
+
+.footer-content p {
+  margin: 0.3rem 0;
+}
+
+footer a:visited {
+  color: var(--color5); /* púrpura clásico para enlaces visitados */
+}
+
+footer a:focus {
+  color: #ff6600; /* naranja contrastante */
+  text-decoration: none; /* opcional: quitar subrayado al pasar el mouse */
+}
