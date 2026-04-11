@@ -32,3 +32,34 @@ export function renderLists(futureContainerId, completedContainerId) {
     completedEl.innerHTML = completedReads.map(b => `<li>${b.title}</li>`).join("");
   }
 }
+
+export function getCurrentRead() {
+  const data = localStorage.getItem("currentRead");
+  return data ? JSON.parse(data) : null;
+}
+
+export function addJournalEntry(entryText) {
+  let current = getCurrentRead();
+  if (!current) return;
+  if (!current.journal) current.journal = [];
+  current.journal.push({ date: new Date().toISOString().slice(0,10), text: entryText });
+  localStorage.setItem("currentRead", JSON.stringify(current));
+}
+
+export function finishCurrentRead() {
+  const current = getCurrentRead();
+  if (!current) return;
+  let completed = JSON.parse(localStorage.getItem("completedReads")) || [];
+  completed.push(current);
+  localStorage.setItem("completedReads", JSON.stringify(completed));
+  localStorage.removeItem("currentRead");
+}
+
+export function pauseCurrentRead() {
+  const current = getCurrentRead();
+  if (!current) return;
+  let future = JSON.parse(localStorage.getItem("futureReads")) || [];
+  future.push(current);
+  localStorage.setItem("futureReads", JSON.stringify(future));
+  localStorage.removeItem("currentRead");
+}
