@@ -1,4 +1,3 @@
-// readings-main.js
 import { getList, removeBook, markAsRead } from "./readings.mjs";
 
 let futureReads = getList("futureReads");
@@ -19,6 +18,9 @@ function bookCard(book, listName) {
     buttons += `
       <button class="mark-btn" data-title="${book.title}">
         Mark as Read
+      </button>
+      <button class="current-btn" data-title="${book.title}">
+        Set as Current
       </button>
     `;
   } else if (listName === "completedReads") {
@@ -48,6 +50,7 @@ function renderLists() {
     completedReads.map(book => bookCard(book, "completedReads")).join("");
 }
 
+// Event listeners para los botones
 document.addEventListener("click", (event) => {
   // Botón Remove
   if (event.target.classList.contains("remove-btn")) {
@@ -63,6 +66,22 @@ document.addEventListener("click", (event) => {
     renderLists();
   }
 
+  // Botón Set as Current
+  if (event.target.classList.contains("current-btn")) {
+    const title = event.target.dataset.title;
+    const book = futureReads.find(b => b.title === title);
+
+    if (book) {
+      localStorage.setItem("currentRead", JSON.stringify(book));
+
+      // quitarlo de futureReads
+      futureReads = futureReads.filter(b => b.title !== title);
+      localStorage.setItem("futureReads", JSON.stringify(futureReads));
+
+      renderLists();
+    }
+  }
+
   // Botón Mark as Read
   if (event.target.classList.contains("mark-btn")) {
     const title = event.target.dataset.title;
@@ -72,76 +91,23 @@ document.addEventListener("click", (event) => {
     futureReads = getList("futureReads");
     completedReads = getList("completedReads");
 
-   
+    renderLists();
   }
-});
 
-// Mostrar listas al cargar
-renderLists();
-
-const twistBtn = document.getElementById("twistBtn");
-const twistModal = document.getElementById("twistModal");
-const twistResult = document.getElementById("twistResult");
-const bookAnimation = document.getElementById("bookAnimation");
-const closeModal = document.getElementById("closeModal");
-
-twistBtn.addEventListener("click", () => {
-  // Reset: mostrar animación, ocultar resultado
-  bookAnimation.style.display = "block";
-  twistResult.style.display = "none";
-
-  twistModal.showModal();
-
-  // Después de 2 segundos, parar animación y mostrar resultado
-  setTimeout(() => {
-    bookAnimation.style.display = "none";
-
-    if (futureReads.length > 0) {
-      const randomIndex = Math.floor(Math.random() * futureReads.length);
-      const book = futureReads[randomIndex];
-      twistResult.textContent = `Next book: ${book.title} by ${book.author_name ? book.author_name.join(", ") : "Unknown author"}`;
-    } else {
-      twistResult.textContent = "No books available in your To Read list.";
-    }
-
-    twistResult.style.display = "block";
-  }, 2000); // duración de la animación
-});
-
-closeModal.addEventListener("click", () => {
-  twistModal.close();
-});
-
-// Referencias al modal
-const viewModal = document.getElementById("viewModal");
-const closeViewModal = document.getElementById("closeViewModal");
-
-const modalTitle = document.getElementById("modalTitle");
-const modalCover = document.getElementById("modalCover");
-const modalAuthor = document.getElementById("modalAuthor");
-const modalYear = document.getElementById("modalYear");
-const modalNotes = document.getElementById("modalNotes");
-const modalJournal = document.getElementById("modalJournal");
-
-document.addEventListener("click", (event) => {
   // Botón View en la lista Read
   if (event.target.classList.contains("view-btn")) {
     const title = event.target.dataset.title;
     const book = completedReads.find(b => b.title === title);
 
     if (book) {
-      // Mostrar info básica
       modalTitle.textContent = book.title;
       modalCover.src = book.cover_i
         ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
         : "./images/no-cover.png";
       modalAuthor.textContent = book.author_name ? book.author_name.join(", ") : "Unknown author";
       modalYear.textContent = book.first_publish_year || "";
-
-      // Mostrar notas guardadas (ejemplo: book.notes)
       modalNotes.textContent = book.notes || "No notes saved.";
 
-      // Mostrar journal entries (ejemplo: book.journal es un array)
       modalJournal.innerHTML = "";
       if (book.journal && book.journal.length > 0) {
         book.journal.forEach(entry => {
@@ -153,13 +119,62 @@ document.addEventListener("click", (event) => {
         modalJournal.innerHTML = "<li>No journal entries.</li>";
       }
 
-      // Abrir modal
       viewModal.showModal();
     }
   }
 });
 
-// Cerrar modal
+// Mostrar listas al cargar
+renderLists();
+
+// --- Twist Modal ---
+const twistBtn = document.getElementById("twistBtn");
+const twistModal = document.getElementById("twistModal");
+const twistResult = document.getElementById("twistResult");
+const bookAnimation = document.getElementById("bookAnimation");
+const closeModal = document.getElementById("closeModal");
+
+twistBtn.addEventListener("click", () => {
+  bookAnimation.style.display = "block";
+  twistResult.style.display = "none";
+
+  twistModal.showModal();
+
+  setTimeout(() => {
+    bookAnimation.style.display = "none";
+
+    if (futureReads.length > 0) {
+      const randomIndex = Math.floor(Math.random() * futureReads.length);
+      const book = futureReads[randomIndex];
+
+      // Guardar como currentRead y también como lastTwist
+      localStorage.setItem("currentRead", JSON.stringify(book));
+      localStorage.setItem("lastTwist", JSON.stringify(book));
+
+      twistResult.textContent = `Next book: ${book.title} by ${book.author_name ? book.author_name.join(", ") : "Unknown author"}`;
+    } else {
+      twistResult.textContent = "No books available in your To Read list.";
+    }
+
+    twistResult.style.display = "block";
+  }, 2000);
+});
+
+closeModal.addEventListener("click", () => {
+  twistModal.close();
+});
+
+// --- View Modal ---
+const viewModal = document.getElementById("viewModal");
+const closeViewModal = document.getElementById("closeViewModal");
+
+const modalTitle = document.getElementById("modalTitle");
+const modalCover = document.getElementById("modalCover");
+const modalAuthor = document.getElementById("modalAuthor");
+const modalYear = document.getElementById("modalYear");
+const modalNotes = document.getElementById("modalNotes");
+const modalJournal = document.getElementById("modalJournal");
+
 closeViewModal.addEventListener("click", () => {
   viewModal.close();
 });
