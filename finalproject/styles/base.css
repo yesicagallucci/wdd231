@@ -47,6 +47,31 @@ main {
  box-shadow: 0 4px 12px rgba(0,0,0,0.35);
 }
 
+/* twist */
+
+.modal-content {
+  animation: pop 0.5s ease;
+}
+
+@keyframes pop {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Animación del libro girando */
+.book-spin {
+  width: 100px;
+  height: 140px;
+  margin: 20px auto;
+  background: url('../images/book-icon.png') no-repeat center/cover;
+  animation: spinBook 2s linear infinite;
+}
+
+@keyframes spinBook {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
+}
+
 
 
 footer {

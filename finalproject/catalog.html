@@ -26,10 +26,27 @@
     <header>
         <a href="index.html" aria-label="go to home"><img src="./images/readtwist-logo-border-smaller.webp" alt="logo of ReadTwist"></a>
         <h1>Track what you read, the next one's a surprise</h1>
+        <a id="menu" href="#"></a>
+        <nav class="navigation">
+            <ul class="navigation-menu">
+                <li><a href="index.html" aria-label="home">Dashboard</a></li>
+                <li><a href="./catalog.html" class="active" aria-label="catalog">Catalog</a></li>
+                <li><a href="./readings.html" aria-label="readings">Readings</a></li>            
+            </ul>
+        </nav>
     </header>
     <main class="catalog">
         <h1>Book Catalog</h1>
-        <input type="text" id="searchInput" placeholder="Search books...">
+        <div class="genre-filters">
+            <button class="genre-btn" data-genre="fantasy">Fantasy</button>
+            <button class="genre-btn" data-genre="romance">Romance</button>
+            <button class="genre-btn" data-genre="mystery">Mystery</button>
+            <button class="genre-btn" data-genre="science">Science</button>
+        </div>
+        <form id="searchForm">
+            <input type="text" id="searchInput" placeholder="Search books...">
+            <button type="submit">Search</button>
+        </form>
         <div id="catalogContainer"></div>
 
     </main>

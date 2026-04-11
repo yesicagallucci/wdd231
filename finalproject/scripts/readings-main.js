@@ -1,0 +1,165 @@
+// readings-main.js
+import { getList, removeBook, markAsRead } from "./readings.mjs";
+
+let futureReads = getList("futureReads");
+let completedReads = getList("completedReads");
+
+function bookCard(book, listName) {
+  const coverUrl = book.cover_i
+    ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
+    : "./images/no-cover.png";
+
+  let buttons = `
+    <button class="remove-btn" data-title="${book.title}" data-list="${listName}">
+      Remove
+    </button>
+  `;
+
+  if (listName === "futureReads") {
+    buttons += `
+      <button class="mark-btn" data-title="${book.title}">
+        Mark as Read
+      </button>
+    `;
+  } else if (listName === "completedReads") {
+    buttons += `
+      <button class="view-btn" data-title="${book.title}">
+        View
+      </button>
+    `;
+  }
+
+  return `
+    <div class="book-card">
+      <img src="${coverUrl}" alt="Cover of ${book.title}" loading="lazy">
+      <h3>${book.title}</h3>
+      <p>${book.author_name ? book.author_name.join(", ") : "Unknown author"}</p>
+      <p>${book.first_publish_year || ""}</p>
+      ${buttons}
+    </div>
+  `;
+}
+
+function renderLists() {
+  document.getElementById("futureList").innerHTML =
+    futureReads.map(book => bookCard(book, "futureReads")).join("");
+
+  document.getElementById("completedList").innerHTML =
+    completedReads.map(book => bookCard(book, "completedReads")).join("");
+}
+
+document.addEventListener("click", (event) => {
+  // Botón Remove
+  if (event.target.classList.contains("remove-btn")) {
+    const title = event.target.dataset.title;
+    const listName = event.target.dataset.list;
+
+    if (listName === "futureReads") {
+      futureReads = removeBook("futureReads", title);
+    } else if (listName === "completedReads") {
+      completedReads = removeBook("completedReads", title);
+    }
+
+    renderLists();
+  }
+
+  // Botón Mark as Read
+  if (event.target.classList.contains("mark-btn")) {
+    const title = event.target.dataset.title;
+    markAsRead(title);
+
+    // refrescar arrays
+    futureReads = getList("futureReads");
+    completedReads = getList("completedReads");
+
+   
+  }
+});
+
+// Mostrar listas al cargar
+renderLists();
+
+const twistBtn = document.getElementById("twistBtn");
+const twistModal = document.getElementById("twistModal");
+const twistResult = document.getElementById("twistResult");
+const bookAnimation = document.getElementById("bookAnimation");
+const closeModal = document.getElementById("closeModal");
+
+twistBtn.addEventListener("click", () => {
+  // Reset: mostrar animación, ocultar resultado
+  bookAnimation.style.display = "block";
+  twistResult.style.display = "none";
+
+  twistModal.showModal();
+
+  // Después de 2 segundos, parar animación y mostrar resultado
+  setTimeout(() => {
+    bookAnimation.style.display = "none";
+
+    if (futureReads.length > 0) {
+      const randomIndex = Math.floor(Math.random() * futureReads.length);
+      const book = futureReads[randomIndex];
+      twistResult.textContent = `Next book: ${book.title} by ${book.author_name ? book.author_name.join(", ") : "Unknown author"}`;
+    } else {
+      twistResult.textContent = "No books available in your To Read list.";
+    }
+
+    twistResult.style.display = "block";
+  }, 2000); // duración de la animación
+});
+
+closeModal.addEventListener("click", () => {
+  twistModal.close();
+});
+
+// Referencias al modal
+const viewModal = document.getElementById("viewModal");
+const closeViewModal = document.getElementById("closeViewModal");
+
+const modalTitle = document.getElementById("modalTitle");
+const modalCover = document.getElementById("modalCover");
+const modalAuthor = document.getElementById("modalAuthor");
+const modalYear = document.getElementById("modalYear");
+const modalNotes = document.getElementById("modalNotes");
+const modalJournal = document.getElementById("modalJournal");
+
+document.addEventListener("click", (event) => {
+  // Botón View en la lista Read
+  if (event.target.classList.contains("view-btn")) {
+    const title = event.target.dataset.title;
+    const book = completedReads.find(b => b.title === title);
+
+    if (book) {
+      // Mostrar info básica
+      modalTitle.textContent = book.title;
+      modalCover.src = book.cover_i
+        ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
+        : "./images/no-cover.png";
+      modalAuthor.textContent = book.author_name ? book.author_name.join(", ") : "Unknown author";
+      modalYear.textContent = book.first_publish_year || "";
+
+      // Mostrar notas guardadas (ejemplo: book.notes)
+      modalNotes.textContent = book.notes || "No notes saved.";
+
+      // Mostrar journal entries (ejemplo: book.journal es un array)
+      modalJournal.innerHTML = "";
+      if (book.journal && book.journal.length > 0) {
+        book.journal.forEach(entry => {
+          const li = document.createElement("li");
+          li.textContent = entry;
+          modalJournal.appendChild(li);
+        });
+      } else {
+        modalJournal.innerHTML = "<li>No journal entries.</li>";
+      }
+
+      // Abrir modal
+      viewModal.showModal();
+    }
+  }
+});
+
+// Cerrar modal
+closeViewModal.addEventListener("click", () => {
+  viewModal.close();
+});

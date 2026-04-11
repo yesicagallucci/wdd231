@@ -19,14 +19,60 @@
     <meta property="og:image" content="">
     <meta property="og:url" content="https://yesicagallucci.github.io/wdd231/finalproject/index.html">
     <script src="scripts/getdates.js" defer></script>
+    <script src="./scripts/readings-main.js" type="module"></script>
     
 </head>
 <body>
     <header>
         <a href="index.html" aria-label="go to home"><img src="./images/readtwist-logo-border-smaller.webp" alt="logo of ReadTwist"></a>
         <h1>Track what you read, the next one's a surprise</h1>
+        <a id="menu" href="#"></a>
+        <nav class="navigation">
+            <ul class="navigation-menu">
+                <li><a href="index.html" aria-label="home">Dashboard</a></li>
+                <li><a href="./catalog.html" aria-label="catalog">Catalog</a></li>
+                <li><a href="./readings.html" class="active" aria-label="readings">Readings</a></li>            
+            </ul>
+        </nav>
+        
     </header>
     <main class="readings">
+        <section>
+            <h2>Books Read</h2>
+            <div id="completedList"></div>
+            <dialog id="viewModal">
+                <div class="modal-content">
+                    <h3 id="modalTitle"></h3>
+                    <img id="modalCover" alt="Book cover">
+                    <p id="modalAuthor"></p>
+                    <p id="modalYear"></p>
+
+                    <h4>Notes</h4>
+                    <p id="modalNotes">No notes saved.</p>
+
+                    <h4>Journal Entries</h4>
+                    <ul id="modalJournal"></ul>
+
+                    <button id="closeViewModal">Close</button>
+                </div>
+            </dialog>
+
+        </section>
+        <section>
+            <h2>Books to Read</h2>
+            <div id="futureList"></div>
+        </section>
+        <section>
+            <h2>Twist: Pick Next Book</h2>
+            <button id="twistBtn">Twist!</button>
+            <dialog id="twistModal">
+                <div class="modal-content">
+                    <div id="bookAnimation" class="book-spin"></div>
+                    <p id="twistResult">Your next book will appear here...</p>
+                    <button id="closeModal">Close</button>
+                </div>
+            </dialog>
+        </section>
 
     </main>
     <footer>
