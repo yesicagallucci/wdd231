@@ -1,90 +1,125 @@
-// index-main.js - Versión mínima y funcional para el dashboard
+// index-main.js
+import {
+  getCurrentRead,
+  getLastTwist,
+  addJournalEntry,
+  finishCurrentRead,
+  pauseCurrentRead,
+  getList
+} from "./data.mjs";
 
-// ==================== FUNCIONES DE DATOS ====================
+// --- Render stats ---
+function renderStats() {
+  const future = getList("futureReads");
+  const completed = getList("completedReads");
 
-function getCurrentRead() {
-  const data = localStorage.getItem("currentRead");
-  return data ? JSON.parse(data) : null;
+  const statsFuture = document.getElementById("statsFuture");
+  const statsCompleted = document.getElementById("statsCompleted");
+
+  if (statsFuture) statsFuture.textContent = `Books to read: ${future.length}`;
+  if (statsCompleted) statsCompleted.textContent = `Books read: ${completed.length}`;
 }
 
-function setCurrentRead(book) {
-  localStorage.setItem("currentRead", JSON.stringify(book));
-}
 
-// ==================== RENDER CURRENT BOOK (dos lugares) ====================
-
-function renderCurrentBook() {
+// --- Render current book card (dashboard) ---
+function renderCurrentCard() {
   const current = getCurrentRead();
+  const div = document.getElementById("currentCard");
+  if (!div) return;
 
-  // Render en la sección "Current Reading"
-  const currentBookDiv = document.getElementById("currentBook");
-  if (currentBookDiv) {
-    if (!current) {
-      currentBookDiv.innerHTML = `<p>No current book selected yet.</p>`;
-    } else {
-      const coverUrl = current.cover_i 
-        ? `https://covers.openlibrary.org/b/id/${current.cover_i}-M.jpg` 
-        : "./images/no-cover.png";
-
-      currentBookDiv.innerHTML = `
-        <div class="book-card">
-          <img src="${coverUrl}" alt="${current.title}" loading="lazy">
-          <h3>${current.title}</h3>
-          <p>${current.author_name ? current.author_name.join(", ") : "Unknown author"}</p>
-          <p>${current.first_publish_year || ""}</p>
-        </div>
-      `;
-    }
+  if (!current) {
+    div.innerHTML = `
+      <h2>Current Book</h2>
+      <p>No current book selected yet.</p>
+    `;
+    return;
   }
 
-  // Render en la card del dashboard
-  const currentCardDiv = document.getElementById("currentCard");
-  if (currentCardDiv) {
-    if (!current) {
-      currentCardDiv.innerHTML = `<h2>Current Book</h2><p>No current book selected yet.</p>`;
-    } else {
-      const coverUrl = current.cover_i 
-        ? `https://covers.openlibrary.org/b/id/${current.cover_i}-M.jpg` 
-        : "./images/no-cover.png";
+  const coverUrl = current.cover_i
+    ? `https://covers.openlibrary.org/b/id/${current.cover_i}-M.jpg`
+    : "./images/no-cover.png";
 
-      currentCardDiv.innerHTML = `
-        <h2>Current Book</h2>
-        <img src="${coverUrl}" alt="${current.title}" loading="lazy">
-        <h3>${current.title}</h3>
-        <p>${current.author_name ? current.author_name.join(", ") : "Unknown author"}</p>
-      `;
-    }
-  }
+  div.innerHTML = `
+    <h2>Current Book</h2>
+    <img src="${coverUrl}" alt="${current.title}" loading="lazy">
+    <h3>${current.title}</h3>
+    <p>${current.author_name ? current.author_name.join(", ") : "Unknown author"}</p>
+    <div class="card-buttons">
+      <button id="viewBtn">View</button>
+      <button id="pauseBtn">Pause</button>
+      <button id="finishBtn">Finish</button>
+    </div>
+  `;
+
+  document.getElementById("viewBtn").addEventListener("click", () => {
+    window.location.href = "readings.html";
+  });
+
+  document.getElementById("pauseBtn").addEventListener("click", () => {
+    pauseCurrentRead();
+    renderCurrentCard();
+    renderStats();
+  });
+
+  document.getElementById("finishBtn").addEventListener("click", () => {
+    finishCurrentRead();
+    renderCurrentCard();
+    renderStats();
+  });
 }
 
-// ==================== RENDER TWIST CARD ====================
-
+// --- Render twist card (dashboard) ---
 function renderTwistCard() {
-  const twistCard = document.getElementById("twistCard");
-  if (!twistCard) return;
+  const div = document.getElementById("twistCard");
+  if (!div) return;
 
-  twistCard.innerHTML = `
+  const twist = getLastTwist();
+
+  if (!twist) {
+    div.innerHTML = `
+      <h2>Last Twist Result</h2>
+      <p>No twist performed yet.</p>
+      <p><small>Go to Readings → Twist to get a surprise book</small></p>
+    `;
+    return;
+  }
+
+  const coverUrl = twist.cover_i
+    ? `https://covers.openlibrary.org/b/id/${twist.cover_i}-M.jpg`
+    : "./images/no-cover.png";
+
+  div.innerHTML = `
     <h2>Last Twist Result</h2>
-    <p>No twist performed yet.</p>
-    <p><small>Go to Readings → Twist to get a surprise book</small></p>
+    <img src="${coverUrl}" alt="${twist.title}" loading="lazy">
+    <h3>${twist.title}</h3>
+    <p>${twist.author_name ? twist.author_name.join(", ") : "Unknown author"}</p>
+    <p><a href="readings.html">Go to Readings to set it as current</a></p>
   `;
 }
 
-// ==================== INICIALIZACIÓN ====================
-
-document.addEventListener("DOMContentLoaded", () => {
-  renderCurrentBook();
-  renderTwistCard();
-
-  // Formulario simple (no rompe aunque vaya a otra página)
+// --- Formulario de journal ---
+function initJournalForm() {
   const form = document.querySelector("form");
-  if (form) {
-    form.addEventListener("submit", (e) => {
-      const textarea = document.getElementById("journalEntry");
-      if (textarea && textarea.value.trim()) {
-        console.log("Journal entry enviado:", textarea.value.trim());
-        // No hacemos preventDefault porque el assignment quiere que vaya a journal-action.html
-      }
-    });
-  }
+  if (!form) return;
+
+  form.addEventListener("submit", () => {
+    // guardamos en localStorage ANTES de que navegue a journal-action.html
+    const textarea = document.getElementById("journalEntry");
+    const entry = textarea.value.trim();
+    if (!entry) return;
+
+    const current = getCurrentRead();
+    if (!current) return;
+
+    addJournalEntry(entry);
+    // no hacemos preventDefault: el form navega a journal-action.html normalmente
+  });
+}
+
+// --- Init ---
+document.addEventListener("DOMContentLoaded", () => {
+  renderStats();
+  renderCurrentCard();
+  renderTwistCard();
+  initJournalForm();
 });

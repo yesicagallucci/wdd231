@@ -82,13 +82,14 @@ h1 {
   padding: 10px;
   background-color: var(--color1);
   border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;  
   position: absolute;
   top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: auto;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.5);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;  
+  
 }
 
 .cta:active {

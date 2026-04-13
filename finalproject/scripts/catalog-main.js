@@ -1,3 +1,4 @@
+//catalog-main.js
 import { fetchBooks, renderCatalog } from "./catalog.mjs";
 
 // Al cargar la página: mostrar 40 libros de ficción (aleatorios)

@@ -1,8 +1,19 @@
-import { getList, removeBook, markAsRead } from "./readings.mjs";
+// readings-main.js
+import {
+  getList,
+  saveList,
+  removeBook,
+  markAsRead,
+  getCurrentRead,
+  setCurrentRead,
+  getLastTwist,
+  setLastTwist
+} from "./data.mjs";
 
 let futureReads = getList("futureReads");
 let completedReads = getList("completedReads");
 
+// --- Generar card de libro ---
 function bookCard(book, listName) {
   const coverUrl = book.cover_i
     ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
@@ -42,6 +53,7 @@ function bookCard(book, listName) {
   `;
 }
 
+// --- Render listas ---
 function renderLists() {
   document.getElementById("futureList").innerHTML =
     futureReads.map(book => bookCard(book, "futureReads")).join("");
@@ -50,19 +62,18 @@ function renderLists() {
     completedReads.map(book => bookCard(book, "completedReads")).join("");
 }
 
-// Event listeners para los botones
+// --- Event listeners de botones de las cards ---
 document.addEventListener("click", (event) => {
+
   // Botón Remove
   if (event.target.classList.contains("remove-btn")) {
     const title = event.target.dataset.title;
     const listName = event.target.dataset.list;
-
     if (listName === "futureReads") {
       futureReads = removeBook("futureReads", title);
     } else if (listName === "completedReads") {
       completedReads = removeBook("completedReads", title);
     }
-
     renderLists();
   }
 
@@ -70,14 +81,10 @@ document.addEventListener("click", (event) => {
   if (event.target.classList.contains("current-btn")) {
     const title = event.target.dataset.title;
     const book = futureReads.find(b => b.title === title);
-
     if (book) {
-      localStorage.setItem("currentRead", JSON.stringify(book));
-
-      // quitarlo de futureReads
+      setCurrentRead(book);
       futureReads = futureReads.filter(b => b.title !== title);
-      localStorage.setItem("futureReads", JSON.stringify(futureReads));
-
+      saveList("futureReads", futureReads);
       renderLists();
     }
   }
@@ -86,25 +93,23 @@ document.addEventListener("click", (event) => {
   if (event.target.classList.contains("mark-btn")) {
     const title = event.target.dataset.title;
     markAsRead(title);
-
-    // refrescar arrays
     futureReads = getList("futureReads");
     completedReads = getList("completedReads");
-
     renderLists();
   }
 
-  // Botón View en la lista Read
+  // Botón View — abre modal con journal entries
   if (event.target.classList.contains("view-btn")) {
     const title = event.target.dataset.title;
     const book = completedReads.find(b => b.title === title);
-
     if (book) {
       modalTitle.textContent = book.title;
       modalCover.src = book.cover_i
         ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
         : "./images/no-cover.png";
-      modalAuthor.textContent = book.author_name ? book.author_name.join(", ") : "Unknown author";
+      modalAuthor.textContent = book.author_name
+        ? book.author_name.join(", ")
+        : "Unknown author";
       modalYear.textContent = book.first_publish_year || "";
       modalNotes.textContent = book.notes || "No notes saved.";
 
@@ -112,7 +117,8 @@ document.addEventListener("click", (event) => {
       if (book.journal && book.journal.length > 0) {
         book.journal.forEach(entry => {
           const li = document.createElement("li");
-          li.textContent = entry;
+          // cada entrada es un objeto {date, text}
+          li.textContent = `${entry.date} – ${entry.text}`;
           modalJournal.appendChild(li);
         });
       } else {
@@ -124,10 +130,7 @@ document.addEventListener("click", (event) => {
   }
 });
 
-// Mostrar listas al cargar
-renderLists();
-
-// --- Twist Modal ---
+// --- Twist ---
 const twistBtn = document.getElementById("twistBtn");
 const twistModal = document.getElementById("twistModal");
 const twistResult = document.getElementById("twistResult");
@@ -137,7 +140,6 @@ const closeModal = document.getElementById("closeModal");
 twistBtn.addEventListener("click", () => {
   bookAnimation.style.display = "block";
   twistResult.style.display = "none";
-
   twistModal.showModal();
 
   setTimeout(() => {
@@ -147,11 +149,10 @@ twistBtn.addEventListener("click", () => {
       const randomIndex = Math.floor(Math.random() * futureReads.length);
       const book = futureReads[randomIndex];
 
-      // Guardar como currentRead y también como lastTwist
-      localStorage.setItem("currentRead", JSON.stringify(book));
-      localStorage.setItem("lastTwist", JSON.stringify(book));
+      // guardar como lastTwist en localStorage (NO como currentRead automáticamente)
+      setLastTwist(book);
 
-      twistResult.textContent = `Next book: ${book.title} by ${book.author_name ? book.author_name.join(", ") : "Unknown author"}`;
+      twistResult.textContent = `Next book: "${book.title}" by ${book.author_name ? book.author_name.join(", ") : "Unknown author"}`;
     } else {
       twistResult.textContent = "No books available in your To Read list.";
     }
@@ -167,7 +168,6 @@ closeModal.addEventListener("click", () => {
 // --- View Modal ---
 const viewModal = document.getElementById("viewModal");
 const closeViewModal = document.getElementById("closeViewModal");
-
 const modalTitle = document.getElementById("modalTitle");
 const modalCover = document.getElementById("modalCover");
 const modalAuthor = document.getElementById("modalAuthor");
@@ -178,3 +178,6 @@ const modalJournal = document.getElementById("modalJournal");
 closeViewModal.addEventListener("click", () => {
   viewModal.close();
 });
+
+// --- Init ---
+renderLists();

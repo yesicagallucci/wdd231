@@ -20,6 +20,7 @@
     <meta property="og:url" content="https://yesicagallucci.github.io/wdd231/finalproject/index.html">
     <script src="scripts/getdates.js" defer></script>
     <script type="module" src="scripts/index-main.js"></script>
+    <script src="scripts/menu.js" defer></script>
     
 </head>
 <body>
@@ -37,34 +38,21 @@
         
     </header>
     <main class="dashboard">
-
         <section class="quick-stats">
-            <h2>Dashboard</h2>
+            <h2>Stats</h2>
             <p id="statsFuture"></p>
             <p id="statsCompleted"></p>
-        </section>
-
-        <section class="current-reading">
-            <h2>Current Reading</h2>
-            <div id="currentBook"></div>
         </section>
 
         <section class="twist-invite">
             <h2>Ready for a Twist?</h2>
             <p>Let the app surprise you with your next read! Click below to spin the wheel and discover your next adventure.</p>
-            <a href="readings.html" class="twist-link">Go to Twist</a>
+            <button><a href="readings.html" class="twist-link">Go to Twist</a></button>
         </section>
 
         <section class="dashboard-cards">
-            <div id="currentCard" class="book-card">
-            <h2>Current Book</h2>
-            
-            </div>
-
-            <div id="twistCard" class="book-card">
-            <h2>Last Twist Result</h2>
-           
-            </div>
+            <div id="currentCard" class="book-card"></div>
+            <div id="twistCard" class="book-card"></div>
         </section>
 
         <form action="journal-action.html" method="get">
