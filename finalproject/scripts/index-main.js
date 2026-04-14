@@ -157,7 +157,7 @@ function initJournalForm() {
   if (!form) return;
 
   form.addEventListener("submit", () => {
-    // guardamos en localStorage ANTES de que navegue a journal-action.html
+    // guarda en localStorage ANTES de que navegue a journal-action.html
     const textarea = document.getElementById("journalEntry");
     const entry = textarea.value.trim();
     if (!entry) return;
@@ -166,11 +166,10 @@ function initJournalForm() {
     if (!current) return;
 
     addJournalEntry(entry);
-    // no hacemos preventDefault: el form navega a journal-action.html normalmente
+    // sin preventDefault: el form navega a journal-action.html normalmente
   });
 }
 
-// --- Init ---
 document.addEventListener("DOMContentLoaded", () => {
   renderStats();
   renderCurrentCard();

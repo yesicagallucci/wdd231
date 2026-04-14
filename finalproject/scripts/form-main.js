@@ -1,5 +1,5 @@
 // form.mjs - lee parámetros de la URL y muestra la entrada del journal
-// form-main.js
+
 import { getCurrentRead } from "./data.mjs";
 
 const params = new URLSearchParams(window.location.search);

@@ -221,8 +221,8 @@ form {
 }
 
 .book-card img {
-  width: 80%;          /* fill the card width */
-  height: 200px;        /* fixed height for consistency */
+  width: 80%;          
+  height: 200px;        
   object-fit: scale-down;
   margin: .5rem;
 }
@@ -339,6 +339,6 @@ footer a {
 }
 
 footer a:visited {
-  color: var(--color5); /* púrpura clásico para enlaces visitados */
+  color: var(--color5);
 }
 

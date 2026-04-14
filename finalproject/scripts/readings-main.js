@@ -149,7 +149,7 @@ twistBtn.addEventListener("click", () => {
       const randomIndex = Math.floor(Math.random() * futureReads.length);
       const book = futureReads[randomIndex];
 
-      // guardar como lastTwist en localStorage (NO como currentRead automáticamente)
+      // guardar como lastTwist en localStorage 
       setLastTwist(book);
 
       twistResult.textContent = `Next book: "${book.title}" by ${book.author_name ? book.author_name.join(", ") : "Unknown author"}`;
@@ -179,5 +179,5 @@ closeViewModal.addEventListener("click", () => {
   viewModal.close();
 });
 
-// --- Init ---
+
 renderLists();
