@@ -342,7 +342,3 @@ footer a:visited {
   color: var(--color5); /* púrpura clásico para enlaces visitados */
 }
 
-footer a:focus {
-  color: #ff6600; /* naranja contrastante */
-  text-decoration: none; /* opcional: quitar subrayado al pasar el mouse */
-}
