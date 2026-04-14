@@ -1,11 +1,13 @@
 // index-main.js
 import {
   getCurrentRead,
+  setCurrentRead,
   getLastTwist,
   addJournalEntry,
   finishCurrentRead,
   pauseCurrentRead,
-  getList
+  getList,
+  saveList
 } from "./data.mjs";
 
 // --- Render stats ---
@@ -52,7 +54,31 @@ function renderCurrentCard() {
   `;
 
   document.getElementById("viewBtn").addEventListener("click", () => {
-    window.location.href = "readings.html";
+    const current = getCurrentRead();
+    if (!current) return;
+
+    // llenar el modal con los datos del libro actual
+    document.getElementById("currentModalTitle").textContent = current.title;
+    document.getElementById("currentModalCover").src = current.cover_i
+      ? `https://covers.openlibrary.org/b/id/${current.cover_i}-M.jpg`
+      : "./images/no-cover.png";
+    document.getElementById("currentModalAuthor").textContent = current.author_name
+      ? current.author_name.join(", ")
+      : "Unknown author";
+
+    const journalList = document.getElementById("currentModalJournal");
+    journalList.innerHTML = "";
+    if (current.journal && current.journal.length > 0) {
+      current.journal.slice().reverse().forEach(entry => {
+        const li = document.createElement("li");
+        li.textContent = `${entry.date} – ${entry.text}`;
+        journalList.appendChild(li);
+      });
+    } else {
+      journalList.innerHTML = "<li>No journal entries yet.</li>";
+    }
+
+    document.getElementById("currentModal").showModal();
   });
 
   document.getElementById("pauseBtn").addEventListener("click", () => {
@@ -69,6 +95,7 @@ function renderCurrentCard() {
 }
 
 // --- Render twist card (dashboard) ---
+
 function renderTwistCard() {
   const div = document.getElementById("twistCard");
   if (!div) return;
@@ -77,7 +104,7 @@ function renderTwistCard() {
 
   if (!twist) {
     div.innerHTML = `
-      <h2>Last Twist Result</h2>
+      <h2>Next Book</h2>
       <p>No twist performed yet.</p>
       <p><small>Go to Readings → Twist to get a surprise book</small></p>
     `;
@@ -89,12 +116,39 @@ function renderTwistCard() {
     : "./images/no-cover.png";
 
   div.innerHTML = `
-    <h2>Last Twist Result</h2>
+    <h2>Next Book</h2>
     <img src="${coverUrl}" alt="${twist.title}" loading="lazy">
     <h3>${twist.title}</h3>
     <p>${twist.author_name ? twist.author_name.join(", ") : "Unknown author"}</p>
-    <p><a href="readings.html">Go to Readings to set it as current</a></p>
+    <div class="card-buttons">
+      <button id="setCurrentBtn">Set as Current</button>
+    </div>
   `;
+
+  document.getElementById("setCurrentBtn").addEventListener("click", () => {
+    const existing = getCurrentRead();
+    let future = getList("futureReads");
+
+    // si hay un libro current, devolverlo a futureReads
+    if (existing) {
+      future = [...future, existing];
+    }
+
+    // buscar el twist en la lista actualizada
+    const book = future.find(b => b.title === twist.title);
+    if (book) {
+      future = future.filter(b => b.title !== twist.title);
+    }
+
+    // guardar todo
+    saveList("futureReads", future);
+    setCurrentRead(book || twist);
+
+    localStorage.removeItem("lastTwist");
+    renderTwistCard();
+    renderCurrentCard();
+    renderStats();
+  });
 }
 
 // --- Formulario de journal ---
@@ -123,3 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderTwistCard();
   initJournalForm();
 });
+
+document.getElementById("closeCurrentModal").addEventListener("click", () => {
+    document.getElementById("currentModal").close();
+  });

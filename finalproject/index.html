@@ -25,7 +25,7 @@
 </head>
 <body>
     <header>
-        <a href="index.html" aria-label="go to home"><img src="./images/readtwist-logo-border-smaller.webp" alt="logo of ReadTwist"></a>
+        <a href="index.html" aria-label="go to home"><img src="./images/readtwist-logo.webp" alt="logo of ReadTwist"></a>
         <h1>Track what you read, the next one's a surprise</h1>
         <a id="menu" href="#"></a>
         <nav class="navigation">
@@ -50,17 +50,25 @@
             <button><a href="readings.html" class="twist-link">Go to Twist</a></button>
         </section>
 
-        <section class="dashboard-cards">
-            <div id="currentCard" class="book-card"></div>
-            <div id="twistCard" class="book-card"></div>
-        </section>
+        <div id="currentCard" class="book-card"></div>
+        <div id="twistCard" class="book-card"></div>
 
-        <form action="journal-action.html" method="get">
+        <form action="journal-action.html" method="get" class="journal">
             <label for="journalEntry">Add Journal Entry:</label>
             <textarea id="journalEntry" name="journalEntry" rows="3" placeholder="Write your thoughts..."></textarea>
             <button type="submit">Save Entry</button>
         </form>
 
+        <dialog id="currentModal">
+            <div class="modal-content">
+                <h3 id="currentModalTitle"></h3>
+                <img id="currentModalCover" alt="Book cover">
+                <p id="currentModalAuthor"></p>
+                <h4>Journal Entries</h4>
+                <ul id="currentModalJournal"></ul>
+                <button id="closeCurrentModal">Close</button>
+            </div>
+        </dialog>
     </main>
 
 

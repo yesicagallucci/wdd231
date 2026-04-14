@@ -25,7 +25,7 @@
 </head>
 <body>
     <header>
-        <a href="index.html" aria-label="go to home"><img src="./images/readtwist-logo-border-smaller.webp" alt="logo of ReadTwist"></a>
+        <a href="index.html" aria-label="go to home"><img src="./images/readtwist-logo.webp" alt="logo of ReadTwist"></a>
         <h1>Track what you read, the next one's a surprise</h1>
         <a id="menu" href="#"></a>
         <nav class="navigation">
@@ -37,7 +37,7 @@
         </nav>
     </header>
     <main class="catalog">
-        <h1>Book Catalog</h1>
+        <h2>Book Catalog</h2>
         <div class="genre-filters">
             <button class="genre-btn" data-genre="fantasy">Fantasy</button>
             <button class="genre-btn" data-genre="romance">Romance</button>
@@ -50,6 +50,13 @@
         </form>
         <div id="catalogContainer"></div>
 
+        <dialog id="confirmDialog">
+            <div class="modal-content">
+                <p id="confirmMessage"></p>
+                <button id="closeConfirmDialog">OK</button>
+            </div>
+        </dialog>
+
     </main>
 
     <footer>
@@ -57,5 +64,6 @@
         <p id="lastmodified"></p>
         <a href="./siteplan.html" target="_blank">Site plan</a> <a href="./references.html" target="_blank">Reference Page</a>
     </footer>  
+    
 </body>
 </html>

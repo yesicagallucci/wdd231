@@ -519,7 +519,7 @@ and fourth value applies to bottom-left corner)*/
   }
 }
 
-/*Module*/
+/*Modal*/
 dialog {
   position: relative;
   background-color: var(--color2);

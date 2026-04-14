@@ -25,7 +25,7 @@
 </head>
 <body>
     <header>
-        <a href="index.html" aria-label="go to home"><img src="./images/readtwist-logo-border-smaller.webp" alt="logo of ReadTwist"></a>
+        <a href="index.html" aria-label="go to home"><img src="./images/readtwist-logo.webp" alt="logo of ReadTwist"></a>
         <h1>Track what you read, the next one's a surprise</h1>
         <a id="menu" href="#"></a>
         <nav class="navigation">
@@ -59,22 +59,22 @@
             </dialog>
 
         </section>
+       
         <section>
-            <h2>Books to Read</h2>
-            <div id="futureList"></div>
-        </section>
-        <section>
-            <h2>Twist: Pick Next Book</h2>
+            <h2>Pick Next Book</h2>
             <button id="twistBtn">Twist!</button>
             <dialog id="twistModal">
                 <div class="modal-content">
-                    <div id="bookAnimation" class="book-spin"></div>
+                    <div id="bookAnimation" class="book-spin" role="img" aria-label="Spinning book animation"></div>
                     <p id="twistResult">Your next book will appear here...</p>
                     <button id="closeModal">Close</button>
                 </div>
             </dialog>
         </section>
-
+        <section>
+            <h2>Books to Read</h2>
+            <div id="futureList"></div>
+        </section>
     </main>
     <footer>
         <p>&copy;<span id="currentyear"></span> By Yesica Gallucci</p>

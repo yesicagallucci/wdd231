@@ -35,14 +35,29 @@ function shuffleArray(array) {
 }
 
 // agregar a lista To Read
+// mostrar dialog de confirmación
+function showConfirm(message) {
+  const dialog = document.getElementById("confirmDialog");
+  const msg = document.getElementById("confirmMessage");
+  const closeBtn = document.getElementById("closeConfirmDialog");
+  
+  msg.textContent = message;
+  dialog.showModal();
+  
+  closeBtn.addEventListener("click", () => {
+    dialog.close();
+  }, { once: true }); // once: true para que no acumule listeners
+}
+
+// agregar a lista To Read
 function addToFuture(book) {
   const list = getList("futureReads");
   const exists = list.find(b => b.title === book.title);
   if (!exists) {
     saveList("futureReads", [...list, book]);
-    alert(`"${book.title}" added to your To Read list.`);
+    showConfirm(`"${book.title}" added to your To Read list.`);
   } else {
-    alert(`"${book.title}" is already in your To Read list.`);
+    showConfirm(`"${book.title}" is already in your To Read list.`);
   }
 }
 
@@ -52,12 +67,11 @@ function addToCompleted(book) {
   const exists = list.find(b => b.title === book.title);
   if (!exists) {
     saveList("completedReads", [...list, book]);
-    alert(`"${book.title}" added to your Read list.`);
+    showConfirm(`"${book.title}" added to your Read list.`);
   } else {
-    alert(`"${book.title}" is already in your Read list.`);
+    showConfirm(`"${book.title}" is already in your Read list.`);
   }
 }
-
 // función para renderizar resultados
 export function renderCatalog(books) {
   const container = document.getElementById("catalogContainer");
