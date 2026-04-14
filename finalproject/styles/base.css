@@ -334,6 +334,10 @@ footer {
   margin: 0.3rem 0;
 }
 
+footer a {
+  color: var(--color5);
+}
+
 footer a:visited {
   color: var(--color5); /* púrpura clásico para enlaces visitados */
 }
